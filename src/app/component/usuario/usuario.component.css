@@ -1,0 +1,163 @@
+/*Espacio alrededor*/
+.row{
+  padding: 50px;
+  color: #aba292;
+  width: 101.1%;
+  }
+
+  .nombre{
+      font-weight: bold;
+      font-size: 30px;
+      color: #aba292;
+      margin-top: 27%;
+      margin-left: -10%;
+      text-transform: uppercase;
+      transition: 0.5s;
+  }
+
+    .nombre:hover {
+      color: #fcfdfd;
+      text-shadow: 0 0 5px #5d442c,
+        0 0 25px #ffffff,
+        0 0 50px #ffffff,
+        0 0 100px #ffffff;
+}
+.acerca{
+  font-weight: bold;
+      font-size: 30px;
+      color: #aba292;
+      text-transform: uppercase;
+      transition: 0.5s;
+}
+    .acerca:hover {
+      color: #fcfdfd;
+      text-shadow: 0 0 5px #5d442c,
+        0 0 25px #ffffff,
+        0 0 50px #ffffff,
+        0 0 100px #ffffff;
+}
+  .titulo{
+    margin-left: -10%;
+  }
+
+  .miFoto {
+    max-width: 80%;
+    margin-top: 7%;
+    overflow:hidden;
+    transition: .8s;
+  }
+  .miFoto:hover {
+    overflow:hidden;
+    transition: .8s;
+    transform: scale(1.5);
+   }
+
+  /*Color de fondo de pagina*/
+  .containerGen{
+    background-color: #151c2d;
+  }
+  .lapiz{
+    background-color: #151c2d;
+    border-color: #151c2d;
+  }
+
+  .btn{
+    width: 50px;
+    height: 50px;
+  }
+  .btn-primary{
+    width: 50px;
+    height: 50px;
+  }
+  .guardar, .cerrar{
+    color: #fff;
+  background-color: #151c2d;
+  border-color: #393437;
+  width:  200px;
+  height: 60px;
+  margin-left: 40%;
+  border-radius: 54px;
+  background: #151c2d;
+  box-shadow:  18px 18px 30px #515151,
+              -18px -18px 30px #8c8a8d;
+  }
+  .present{
+    font-family: 'Lucida Sans', sans-serif;
+    color: #afb2cc;
+    animation: neon 5s infinite;
+  }
+  @keyframes neon{
+    0%, 39%, 41%, 59%, 61%, 100%{
+      text-shadow: white 0 0 12px,
+      #ff3aad 0 0 24px,
+      #ff3aad 0 0 63px;
+    }
+    40%, 60%{
+      text-shadow: none;
+    }
+  }
+
+  .btn-success {
+    color: #fff;
+    background-color: #151c2d;
+    border-color: #393437;
+    width:  200px;
+    height: 60px;
+    margin-left: 90%;
+  }
+
+  .modal, .modal div {
+    background-color: #e3d6d0;
+  }
+
+
+
+  /* ESTILOS DE LA FOTO DE PERFIL SEGUN LOS TAMAÑOS DE PANALLA */
+  /*movil - Portrait - Default*/
+  @media (max-width: 575.98px) and (orientation:landscape){
+    .miFoto{
+      top: 24%;
+      left: 5%;
+      width: 60%;
+      border-radius: 100%;
+      box-shadow: 3.75PX 3.75PX 3.75PX #483e3c;
+      position:absolute;
+      left: 3%;
+    }
+  }
+
+  /*Tablet - Portrait*/
+    @media (min-width: 576px) and (max-width: 991.98px) and (orientation:portrait){
+      .miFoto{
+        margin-top: -40%;
+        left: 5%;
+        width: 60%;
+        border-radius: 100%;
+        box-shadow: 3.75PX 3.75PX 3.75PX #483e3c;
+        position: absolute;
+      }
+    }
+
+      /*landscape*/
+  @media (min-width: 991.98px) and (max-width: 1199.98px) and (orientation:landscape) {
+    .miFoto{
+        top: -40%;
+        left: 5%;
+        width: 60%;
+        border-radius: 100%;
+        box-shadow: 3.75PX 3.75PX 3.75PX #483e3c;
+        position: absolute;
+    }
+  }
+
+  /*Escritorio*/
+  @media (min-width: 1199.98px) and (max-width: 1680px)and (orientation:landscape) {
+    .miFoto{
+      top: -47%;
+      left: 5%;
+      width: 60%;
+      border-radius: 100%;
+      box-shadow: 3.75PX 3.75PX 3.75PX #483e3c;
+      position: absolute;
+    }
+  }

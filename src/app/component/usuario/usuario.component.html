@@ -1,0 +1,268 @@
+<div class="row containerGen" *ngIf="usuarios">
+  <!-- forma de presentarse en diferentes dispositivos -->
+  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+    <img
+      alt="foto_portada"
+      src="../../../assets/fotoperfil.jpg "
+      class="img-fluid miFoto"
+    />
+  </div>
+  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+    <p class="nombre">{{ usuarios[0].nombre }} {{ usuarios[0].apellido }}</p>
+    <p class="titulo">{{ usuarios[0].titulo }}</p>
+    <p class="titulo">{{ usuarios[0].mail }}</p>
+    <p class="titulo">{{ usuarios[0].telefono }}</p>
+  </div>
+  <div class="col-xs-12 col-sm-8 col-md-8 col-lg-7" class="col text-center">
+    <a
+      (click)="onOpenModal('edit', usuarios[0])"
+      class="btn btn-primary tooltips lapiz"
+      data-placement="top"
+      data-toggle="tooltip"
+      data-original-title="edit"
+      ><em class="fa fa-pencil"></em>
+    </a>
+    <span>
+      <h1 class="acerca">Acerca de mi</h1>
+      <p>
+        {{ usuarios[0].acerca }} {{ usuarios[0].acercas }}
+        {{ usuarios[0].acercas2 }}
+      </p>
+    </span>
+  </div>
+</div>
+<!-- fin de diseño de pantalla de Usuario-->
+
+<!--Modal de editar usuario-->
+<div
+  class="modal fade"
+  id="editarUsuarioModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editarUsuarioModalLabel"
+  aria-hidden="true"
+>
+  <!-- Renglon para editar -->
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarUsuarioModalLabel">
+          Editar el Usuario {{ editarUsuario?.nombre }} {{ editarUsuario?.apellido }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true"> &times;</span>
+        </button>
+      </div>
+
+      <!-- Renglon para el nombre -->
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name"> Nombres </label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.nombre }}"
+              name="nombre"
+              class="form-control"
+              id="nombre"
+              aria-describedby="emailHelp"
+              placeholder="Ingrese los nombres"
+            />
+          </div>
+
+          <!-- Renglon para la id -->
+          <input
+            type="hidden"
+            ngModel="{{ editarUsuario?.id }}"
+            name="id"
+            class="form-control"
+            id="id"
+            placeholder=""
+          />
+
+          <!-- Renglon para la apellido -->
+          <div class="form-group">
+            <label for="apellido"> Apellidos </label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.apellido }}"
+              name="apellido"
+              class="form-control"
+              id="apellido"
+              placeholder="Apellidos"
+            />
+          </div>
+
+          <!-- Renglon para el titulo -->
+          <div class="form-group">
+            <label for="titulo"> Título </label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.titulo }}"
+              name="titulo"
+              class="form-control"
+              id="titulo"
+              placeholder="Título"
+            />
+          </div>
+
+          <!-- Renglon para la Foto de perfil -->
+          <div class="form-group">
+            <label for="fotoPerfil"> URL de la foto de perfil </label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.fotoPerfil }}"
+              name="fotoPerfil"
+              class="form-control"
+              id="fotoPerfil"
+              placeholder="URL de la foto de perfil"
+            />
+          </div>
+
+          <!-- Renglon para 1er acerca -->
+          <div class="form-group">
+            <label for="fechaFinEdu">
+              1ra parte de acerca (150 caracteres)</label
+            >
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.acerca }}"
+              name="acerca"
+              class="form-control"
+              id="acerca"
+              placeholder="1ra parte de acerca (150 caracteres)"
+            />
+          </div>
+
+          <!-- Renglon para 2do acerca -->
+          <div class="form-group">
+            <label for="acercas"> 2da parte de acerca (150 caracteres)</label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.acercas }}"
+              name="acercas"
+              class="form-control"
+              id="acercas"
+              placeholder="2da parte de acerca (150 caracteres)"
+            />
+          </div>
+
+          <!-- Renglon para 3er acerca -->
+          <div class="form-group">
+            <label for="acercas2"> 3ra parte de acerca (150 caracteres)</label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.acercas2 }}"
+              name="acercas2"
+              class="form-control"
+              id="acercas2"
+              placeholder="3ra parte de acerca (150 caracteres)"
+            />
+          </div>
+
+          <!-- Renglon para telefono -->
+          <div class="form-group">
+            <label for="telefono"> Teléfono </label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.telefono }}"
+              name="telefono"
+              class="form-control"
+              id="telefono"
+              placeholder=" Telefono "
+            />
+          </div>
+
+          <!-- Renglon para el mail -->
+          <div class="form-group">
+            <label for="mail"> Mail </label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.mail }}"
+              name="mail"
+              class="form-control"
+              id="mail"
+              placeholder=" Mail "
+            />
+          </div>
+
+          <!-- Renglon para el facebook -->
+          <div class="form-group">
+            <label for="facebook"> Facebook </label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.facebook}}"
+              name="facebook"
+              class="form-control"
+              id="facebook"
+              placeholder=" Facebook "
+            />
+          </div>
+
+          <!-- Renglon para el github -->
+          <div class="form-group">
+            <label for="github"> Github </label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.github }}"
+              name="github"
+              class="form-control"
+              id="github"
+              placeholder=" Github "
+            />
+          </div>
+
+          <!-- Renglon para el linkedin -->
+          <div class="form-group">
+            <label for="linkedin"> Linkedin </label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.linkedin }}"
+              name="linkedin"
+              class="form-control"
+              id="linkedin"
+              placeholder=" Linkedin "
+            />
+          </div>
+
+          <!-- Renglon para el imagen -->
+          <div class="form-group">
+            <label for="imagen"> Imagen de fondo </label>
+            <input
+              type="text"
+              ngModel="{{ editarUsuario?.imagen }}"
+              name="imagen"
+              class="form-control"
+              id="imagen"
+              placeholder=" Imagen de fondo "
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              id=""
+              data-dismiss="modal"
+              class="btn btn-secondary cerrar present"
+            >
+              Cerrar
+            </button>
+            <button
+              (click)="onUpdateUsuario(editForm.value)"
+              data-dismiss="modal"
+              class="btn btn-primary guardar present"
+            >
+              Guardar cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div></div>

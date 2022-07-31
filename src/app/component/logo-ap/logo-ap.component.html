@@ -1,0 +1,50 @@
+<div *ngIf="usuarios">
+  <div class="banda">
+    <div class="logo">
+      <img alt="Portada" src="../../assets/APLogo-20-20.png" id="ap" />
+      <img alt="Inti" src="../../../assets/inti_t.png" id="inti" />
+      <img alt="Ministerio" src="../../../assets/ministerio_t.png" id="minis" />
+    </div>
+    <div class="iconos">
+      <div class="cuerpo">
+        <div class="dropdown">
+          <span class="label"
+            ><em class="fa-solid fa-link"></em> Social Links</span
+          >
+          <ul class="items">
+            <li>
+              <a href="{{ usuarios[0].facebook }}" target="_blank"
+                ><em class="fa-brands fa-facebook"></em> Facebook</a
+              >
+            </li>
+            <li>
+              <a href="{{ usuarios[0].github }}" target="_blank"
+                ><em class="fa-brands fa-github"></em> Github</a
+              >
+            </li>
+            <li>
+              <a href="{{ usuarios[0].linkedin }}" target="_blank"
+                ><em class="fa-brands fa-linkedin"></em> Linkedin</a
+              >
+            </li>
+            <li>
+              <a href="https://alvo.chat/qi" target="_blank"
+                ><em class="fa-brands fa-whatsapp"></em> Whatsapp</a
+              >
+            </li>
+            <li>
+              <a href="mailto:{{ usuarios[0].mail }}" target="_blank"
+                ><em class="fa-brands fa-envelope"></em> Correo</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="logout">
+      <button type="button" class="btn btn-outline-success" class="salida">
+        <a href="">Logout</a>
+      </button>
+    </div>
+    </div>
+  </div>
+</div>

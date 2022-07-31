@@ -1,0 +1,272 @@
+<div class="contInst">
+  <h1 class="text-center">Potencias</h1>
+  <!-- boton Agregar potencia -->
+  <button
+    id="botAgr"
+    type="button"
+    class="btn btn-success agrPot"
+    (click)="onOpenModal('add')"
+  >
+    <a style="color: aliceblue"
+      >Agregar potencia
+      <span class="sr-only">(current)</span>
+    </a>
+  </button>
+</div>
+
+<div class="row contPot">
+  <div class="main-container" *ngFor="let potencias of lasPotencias">
+    <circle-progress
+      [percent]="potencias.valor"
+      [radius]="80"
+      [outerStrokeWidth]="15"
+      [titleColor]="'#0e192b'"
+      [subtitleColor]="'#323d4f'"
+      [titleFontWeight]="'23px'"
+      [showUnits]="false"
+      [innerStrokeWidth]="8"
+      [outerStrokeColor]="'#d5b69f'"
+      [innerStrokeColor]="'#5e5565'"
+      [animation]="true"
+      [animationDuration]="1800"
+      [title]="potencias.potencias"
+      [titleFontWeight]="'700'"
+      [subtitle]="[potencias.valor] + ' %'"
+      [subtitleFontSize]="'20'"
+    ></circle-progress>
+
+    <div class="contBot">
+      <!-- boton editar -->
+      <a
+        (click)="onOpenModal('edit', potencias)"
+        class="btn btn-primary tooltips editar"
+        data-placement="top"
+        data-toggle="tooltip"
+        data-original-title="Edit"
+      >
+        <em class="fa fa-pencil"> </em>
+      </a>
+
+      <!-- boton borrar -->
+      <a
+        (click)="onOpenModal('delete', potencias)"
+        class="btn btn-secondary tooltips borrar"
+        data-placement="top"
+        data-toggle="tooltip"
+        data-original-title="Delete"
+        ><em class="fa fa-times"></em>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!--Modal de agregar potencia-->
+<div
+  class="modal fade"
+  id="addPotenciaModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="addPotenciaModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addPotenciaModalLabel">Agregar Potencia</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true"> &times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddPotencia(addForm)">
+          <div class="form-group">
+            <!-- Renglon para la potencia -->
+            <label for="tituloEdu"> Potencia </label>
+            <input
+              type="text"
+              ngModel
+              name="potencias"
+              class="form-control"
+              id="potencias"
+              placeholder="Ingrese el nombre de la potencia."
+              required
+            />
+          </div>
+          <div class="form-group">
+            <!-- Renglon para el porcentaje -->
+            <label for="descEdu"> Número del porcentaje </label>
+            <input
+              type="text"
+              ngModel
+              name="valor"
+              class="form-control"
+              id="valor"
+              placeholder="Ingrese el Número del porcentaje."
+              required
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="add-potencia-form"
+              class="btn btn-secondary cierra present"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button type="submit" class="btn btn-primary guarda present">
+              Guardar cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal de borrar potencia-->
+<div
+  data-bs-toggle="modal"
+  data-bs-target="#deleteModelLabel"
+  class="modal fade"
+  id="deletePotenciaModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteModelLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModelLabel">Borrar Potencia</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Está seguro de borrar esta potencia: {{ deletePotencia?.potencias }}?
+        </p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            No
+          </button>
+          <button
+            (click)="onDeletePotencia(deletePotencia!.idPot)"
+            class="btn btn-danger"
+            data-dismiss="modal"
+          >
+            Si
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal de editar Potencia-->
+<div
+  class="modal fade"
+  id="editarPotenciaModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editarPotenciaModalLabel"
+  aria-hidden="true"
+>
+  <!-- Renglon para editar -->
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarPotenciaModalLabel">
+          Editar potencia {{ editarPotencia?.potencias }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true"> &times;</span>
+        </button>
+      </div>
+
+      <!-- Renglon para el nombre de la potencia -->
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name"> Nombre de la potencia </label>
+            <input
+              type="text"
+              ngModel="{{ editarPotencia?.potencias }}"
+              name="potencias"
+              class="form-control"
+              id="potencias"
+              aria-describedby="emailHelp"
+              placeholder="Ingrese el nombre de la potencia"
+            />
+          </div>
+
+          <!-- Renglon para la id -->
+          <input
+            type="hidden"
+            ngModel="{{ editarPotencia?.idPot }}"
+            name="idPot"
+            class="form-control"
+            id="idPot"
+            placeholder=""
+          />
+
+          <!-- Renglon para el valor de la potencia -->
+          <div class="form-group">
+            <label for="descEdu"> Valor de la potencia</label>
+            <input
+              type="text"
+              ngModel="{{ editarPotencia?.valor }}"
+              name="valor"
+              class="form-control"
+              id="valor"
+              placeholder="Valor de la potencia"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              id=""
+              data-dismiss="modal"
+              class="btn btn-secondary cierra present"
+            >
+              Cerrar
+            </button>
+            <button
+              (click)="onUpdatePotencia(editForm.value)"
+              data-dismiss="modal"
+              class="btn btn-primary guarda present"
+            >
+              Guardar cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Notification for no employees -->
+<div *ngIf="lasPotencias?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">Sin Potencias!</h4>
+    <p>No se encontró.</p>
+  </div>
+</div>

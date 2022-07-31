@@ -1,0 +1,417 @@
+<div class="contInst">
+  <h1 class="text-center">Trabajos</h1>
+  <!-- boton Agregar experiencia -->
+  <button
+    type="button"
+    class="btn btn-success agrExp"
+    (click)="onOpenModal('add')"
+  >
+    <a style="color: aliceblue"
+      >Agregar Trabajos.
+      <span class="sr-only">(current)</span>
+    </a>
+  </button>
+</div>
+<!-- fin primer sector -->
+
+<div class="row">
+  <div id="main-container">
+    <div *ngFor="let experiencia of experiencias" class="contGen">
+      <div class="div1">
+        <img alt="Imagen experiencia" src="{{ experiencia.imagenExp }}" />
+      </div>
+      <div class="div2">
+        <div class="div2a">
+          <h3>{{ experiencia.asigExp }}</h3>
+        </div>
+        <div class="div2b">
+          <h6>{{ experiencia.lugarExp }}</h6>
+        </div>
+      </div>
+      <!-- FIN DE DIV 2 -->
+      <div class="div3">
+        <div class="div3a">
+          <h2>{{ experiencia.nombreExp }}</h2>
+        </div>
+        <div class="div3b">
+          <h6>{{ experiencia.descExp }}</h6>
+        </div>
+      </div>
+      <!-- FIN DE DIV 3 -->
+      <div class="div4">
+        <div class="div4a">
+          <!-- boton editar -->
+          <a
+            (click)="onOpenModal('edit', experiencia)"
+            class="btn btn-primary tooltips lapiz"
+            data-placement="top"
+            data-toggle="tooltip"
+            data-original-title="Edit"
+            ><em class="fa fa-pencil"></em>
+          </a>
+
+          <!-- boton borrar -->
+          <a
+            (click)="onOpenModal('delete', experiencia)"
+            class="btn btn-secondary tooltips cruz"
+            data-placement="top"
+            data-toggle="tooltip"
+            data-original-title="Delete"
+            ><em class="fa fa-times"></em>
+          </a>
+        </div>
+        <div class="div4b">
+          <h3>{{ experiencia.fechaIniExp }} - {{ experiencia.fechaFinExp }}</h3>
+        </div>
+      </div>
+      <!-- FIN DE DIV 4 -->
+    </div>
+  </div>
+</div>
+<!-- fin de diseño de pantalla de INSTRUCCIONES-->
+
+<!--Modal de agregar experiencia-->
+<div
+  class="modal fade"
+  id="addExperienciaModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="addExperienciaModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addExperienciaModalLabel">
+          Agregar Experiencia
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true"> &times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddExperiencia(addForm)">
+          <div class="form-group">
+            <!-- Renglon para el título -->
+            <label for="nombreExp"> Nombre de la Empresa </label>
+            <input
+              type="text"
+              ngModel
+              name="nombreExp"
+              class="form-control"
+              id="nombreExp"
+              placeholder="Ingrese el nombre de la Empresa donde trabajó."
+              required
+            />
+          </div>
+          <div class="form-group">
+            <!-- Renglon para la descricion -->
+            <label for="descExp"> Descripción de las tareas realizadas</label>
+            <input
+              type="text"
+              ngModel
+              name="descExp"
+              class="form-control"
+              id="descExp"
+              placeholder="Ingrese una breve Descripcion de las tareas realizadas."
+              required
+            />
+          </div>
+          <div class="form-group">
+            <!-- Renglon para la Imagen -->
+            <label for="imagenExp"> Imagen/Logo </label>
+            <input
+              type="text"
+              ngModel
+              name="imagenExp"
+              class="form-control"
+              id="imagenExp"
+              placeholder="Ingrese la URL de la Imagen."
+              required
+            />
+          </div>
+          <div class="form-group">
+            <!-- Renglon para la Fecha Inicio -->
+            <label for="fechaIniExp"> Fecha de inicio </label>
+            <input
+              type="text"
+              ngModel
+              name="fechaIniExp"
+              class="form-control"
+              id="fechaIniExp"
+              placeholder="Ingrese la fecha de iniciación"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <!-- Renglon para la Fecha Fin -->
+            <label for="fechaFinExp"> Fecha de finalización </label>
+            <input
+              type="text"
+              ngModel
+              name="fechaFinExp"
+              class="form-control"
+              id="fechaFinExp"
+              placeholder="Ingrese la fecha de finalización"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <!-- Renglon para los cargos asignados -->
+            <label for="lugarExp"> Cargos asignados </label>
+            <input
+              type="text"
+              ngModel
+              name="asigExp"
+              class="form-control"
+              id="asigExp"
+              placeholder="Cargo Asignado(Vendedor, Programador, etc"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <!-- Renglon para los puestos asignados -->
+            <label for="lugarExp"> Lugares asignados </label>
+            <input
+              type="text"
+              ngModel
+              name="lugarExp"
+              class="form-control"
+              id="lugarExp"
+              placeholder="Lugar o puesto de trabajo.."
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="add-experiencia-form"
+              class="btn btn-secondary cierra present"
+              data-dismiss="modal"
+            >
+              Cerrar
+            </button>
+            <button
+            type="submit" class="btn btn-primary guarda present">
+              Guardar cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal de borrar experiencia de trabajo-->
+<div
+  data-bs-toggle="modal"
+  data-bs-target="#deleteModelLabel"
+  class="modal fade"
+  id="deleteExperienciaModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteModelLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModelLabel">Borrar Trabajo</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Está seguro de borrar esta experiencia de trabajo?.
+          {{ deleteExperiencia?.nombreExp }}?
+        </p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            No
+          </button>
+          <button
+            (click)="onDeleteExperiencia(deleteExperiencia!.idExp)"
+            class="btn btn-danger"
+            data-dismiss="modal"
+          >
+            Si
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Modal de editar experiencia-->
+<div
+  class="modal fade"
+  id="editarExperienciaModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editarExperienciaModalLabel"
+  aria-hidden="true"
+>
+  <!-- Renglon para editar -->
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarExperienciaModalLabel">
+          Editar Experiencia de Trabajo {{ editarExperiencia?.nombreExp }}
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true"> &times;</span>
+        </button>
+      </div>
+
+      <!-- Renglon para el Nombre de la Empresa -->
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name"> Empresa </label>
+            <input
+              type="text"
+              ngModel="{{ editarExperiencia?.nombreExp }}"
+              name="nombreExp"
+              class="form-control"
+              id="nombreExp"
+              aria-describedby="emailHelp"
+              placeholder="Ingrese el nombre de la Empresa"
+            />
+          </div>
+
+          <!-- Renglon para la id -->
+          <input
+            type="hidden"
+            ngModel="{{ editarExperiencia?.idExp }}"
+            name="idExp"
+            class="form-control"
+            id="idExp"
+            placeholder=""
+          />
+
+          <!-- Renglon para la descricion -->
+          <div class="form-group">
+            <label for="descExp">
+              Descripción de la Experiencia de trabajo.</label
+            >
+            <input
+              type="text"
+              ngModel="{{ editarExperiencia?.descExp }}"
+              name="descExp"
+              class="form-control"
+              id="descExp"
+              placeholder="Descripcion de tareas realizadas"
+            />
+          </div>
+
+          <!-- Renglon para el tipo en el trabajo -->
+          <div class="form-group">
+            <label for="lugarExp"> Tipo de trabajo </label>
+            <input
+              type="text"
+              ngModel="{{ editarExperiencia?.asigExp }}"
+              name="asigExp"
+              class="form-control"
+              id="asigExp"
+              placeholder="Tipo de trabajo."
+            />
+          </div>
+
+          <!-- Renglon para el lugar en el trabajo -->
+          <div class="form-group">
+            <label for="lugarExp"> Sector de trabajo </label>
+            <input
+              type="text"
+              ngModel="{{ editarExperiencia?.lugarExp }}"
+              name="lugarExp"
+              class="form-control"
+              id="lugarExp"
+              placeholder="Sector/lugar de trabajo."
+            />
+          </div>
+
+          <!-- Renglon para la Fecha Inicio -->
+          <div class="form-group">
+            <label for="phone"> Fecha de inicio </label>
+            <input
+              type="text"
+              ngModel="{{ editarExperiencia?.fechaIniExp }}"
+              name="fechaIniExp"
+              class="form-control"
+              id="fechaIniExp"
+              placeholder="fecha de inicio de la experiencia de trabajo"
+            />
+          </div>
+
+          <!-- Renglon para la Fecha Fin -->
+          <div class="form-group">
+            <label for="fechaFinExp"> Fecha de finalización </label>
+            <input
+              type="text"
+              ngModel="{{ editarExperiencia?.fechaFinExp }}"
+              name="fechaFinExp"
+              class="form-control"
+              id="fechaFinExp"
+              placeholder="fecha de finalización de la experiencia de trabajo"
+            />
+          </div>
+
+          <!-- Renglon para la Imagen -->
+          <div class="form-group">
+            <label for="imagenExp"> Imagen URL </label>
+            <input
+              type="text"
+              ngModel="{{ editarExperiencia?.imagenExp }}"
+              name="imagenExp"
+              class="form-control"
+              id="imagenExp"
+              placeholder="Imagen URL"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              id=""
+              data-dismiss="modal"
+              class="btn btn-secondary cierra present"
+            >
+              Cerrar
+            </button>
+            <button
+              (click)="onUpdateExperiencia(editForm.value)"
+              data-dismiss="modal"
+              class="btn btn-primary guarda present"
+            >
+              Guardar cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Notification for no employees -->
+<div *ngIf="experiencias?.length == 0" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">Sin Experiencias!</h4>
+    <p>No se encontró.</p>
+  </div>
+</div>

@@ -1,0 +1,157 @@
+.row{
+  padding: 15px;
+  margin: 0 auto;
+}
+.text-center{
+  line-height: 150px;
+  margin: 0%;
+}
+
+.contInst{
+  position: relative;
+  height: fit-content;
+}
+.agrEdu{
+  position: absolute;
+  right: 5%;
+  top: 35%;
+}
+
+.contGen{
+  display: flex;
+  margin-bottom: 3%;
+  justify-content: space-around;
+}
+
+#main-container{
+width: 100%;
+}
+div{
+  background-color: #e3d6d0;
+}
+.div1{
+  max-width: 200px;
+  width: 100%;
+}
+.div2{
+  max-width: 200px;
+  width: 100%;
+}
+.div3{
+  width: 100%;
+  max-width: 400px;
+}
+.div3a{
+  display: flex;
+  justify-content: center;
+}
+.div3b{
+  width: max-content;
+  margin: 0 auto;
+}
+.div4{
+  max-width: 200px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.div4a{
+  display: flex;
+  justify-content: center;
+}
+.div4b{
+  width: max-content;
+  margin: 0 auto;
+}
+.lapiz, .cruz{
+  background-color: #e3d6d0;
+  border-color: #e3d6d0;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Cambio de color de titulos en H1 */
+h1{
+  font-weight: 700;
+  color: #14121d;
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+
+  h1:hover {
+    color: #fcfdfd;
+    text-shadow: 0 0 5px #5d442c,
+        0 0 25px #8e8e8e,
+        0 0 50px #8e8e8e,
+        0 0 100px #8e8e8e;
+}
+h2{
+  display: inline;
+
+}
+h3 {
+  display: inline;
+
+}
+
+img{
+  width: 200px;
+}
+.btn{
+  width: 50px;
+  height: 50px;
+}
+.btn-primary{
+  width: 50px;
+  height: 50px;
+}
+.btn-success {
+  color: #fff;
+  background-color: #151c2d;
+  border-color: #393437;
+  width:  200px;
+  height: 60px;
+  margin-left: 40%;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: incline-block;
+  font-size: 16px;
+  }
+.btn-success:hover{
+  transition: 0.5s;
+  background-color: #d29a75;
+  color: black;
+  box-shadow: 0px 0px 40px #d29a75;
+}
+.editar, .borrar{
+  width: 45px;
+}
+.cierra, .guarda {
+  color: #fff;
+  background-color: #151c2d;
+  border-color: #393437;
+  width:  200px;
+  height: 60px;
+  margin-left: 40%;
+  border-radius: 54px;
+  background: #151c2d;
+  box-shadow:  18px 18px 30px #515151,
+              -18px -18px 30px #8c8a8d;
+}
+.present{
+  font-family: 'Lucida Sans', sans-serif;
+  color: #afb2cc;
+  animation: neon 5s infinite;
+}
+@keyframes neon{
+  0%, 39%, 41%, 59%, 61%, 100%{
+    text-shadow: white 0 0 12px,
+    #ff3aad 0 0 24px,
+    #ff3aad 0 0 63px;
+  }
+  40%, 60%{
+    text-shadow: none;
+  }
+}

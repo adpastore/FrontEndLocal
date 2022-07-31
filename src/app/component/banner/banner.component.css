@@ -1,0 +1,24 @@
+.portadafondo{
+  width: 100%;
+}
+
+.present{
+  padding-bottom: 100px;
+  font-family: 'Lucida Sans', sans-serif;
+  position: absolute;
+  right: 250px;
+  top: 250px;
+  color: transparent;
+  transition: .8s;
+  }
+.present:hover {
+  text-shadow: -1px -1px 1px #aaa,
+             0px 4px 1px #583b2f,
+             4px 4px 5px #15121d,
+             0px 0px 7px #583b2f;
+  overflow:hidden;
+  transition: 1s;
+  transform: scale(1.5);
+  color: #aeacad;
+
+ }

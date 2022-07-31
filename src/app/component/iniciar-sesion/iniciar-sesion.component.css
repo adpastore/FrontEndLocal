@@ -1,0 +1,48 @@
+.portadafondo{
+  width: 100%;
+  height: 100vh;
+}
+
+.portadafondo:hover {
+  filter: sepia(60%);
+  transition:all 1.5s ease-in-out;
+}
+
+.entrada{
+  background-color: transparent;
+  border-radius: 14px;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+.envio{
+  background-color: #0d1b32;
+}
+.iniciar{
+  width: 120px;
+  height: 60px;
+  border: 2px solid white;
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  position: relative;
+}
+.present{
+  font-family: 'Lucida Sans', sans-serif;
+  position: absolute;
+  right: 450px;
+  top: 550px;
+  color: #afb2cc;
+  animation: neon 5s infinite;
+}
+@keyframes neon{
+  0%, 39%, 41%, 59%, 61%, 100%{
+    text-shadow: white 0 0 12px,
+    #ff3aad 0 0 24px,
+    #ff3aad 0 0 63px;
+  }
+  40%, 60%{
+    text-shadow: none;
+  }
+}

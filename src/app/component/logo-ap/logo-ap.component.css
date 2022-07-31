@@ -1,0 +1,171 @@
+.banda{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fix;
+}
+
+.logo{
+  display: flex;
+  height: 80%;
+  width: auto;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+ #inti {
+   width: 30px;
+   height: 40px;
+   margin-right: 6px;
+
+ }
+#minis{
+  width: 140px;
+  height: 40px;
+  }
+#ap{
+  width: 100px;
+  height: 40px;
+}
+img{
+  width: 60px;
+}
+.iconos{
+  display: flex;
+}
+
+
+.logout {
+  font-family: "Poppins", sans-serif;
+  display: grid;
+  place-items: center;
+  align-items: baseline;
+  background: #122660;
+}
+
+.salida {
+  margin-right: 5px;
+  padding: 18px 30px;
+  font-size: 16px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: #122660;
+  border-radius: 5px;
+  min-width: 200px;
+  color: #584439;
+  z-index: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+}
+
+.salida::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: -50px;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #929093, transparent);
+  transition: all 1s;
+  z-index: -1;
+  transform: translateX(-120px) skew(-20deg);
+}
+
+.salida:hover::before {
+  transform: translateX(300px) skew(-20deg);
+}
+
+.salida:hover {
+  background: #122660;
+}
+
+
+
+.cuerpo {
+  margin: 0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: #122660;
+  color: #cccccc;
+  display: grid;
+  place-items: center;
+}
+
+ul {
+  list-style: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
+.dropdown {
+  position: relative;
+}
+.label {
+  cursor: pointer;
+  background: #122660;
+  padding: 0.8rem 1rem;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+.items a {
+  color: #cccccc;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.items a:hover {
+  border-left: 5px solid;
+  background: #1f1823;
+}
+
+.fa-brands,
+.fa-solid {
+  margin-right: 10px;
+}
+
+.items {
+  background: #1f1823;
+  opacity: 0;
+  visibility: hidden;
+  min-width: 100%;
+  height: 0;
+  position: absolute;
+  top: 48px;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.3s;
+}
+
+.items::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #1f1823;
+  transform: rotate(45deg);
+  top: -7px;
+  left: 20px;
+  z-index: -1;
+}
+
+.dropdown:hover > .items {
+  opacity: 1;
+  visibility: visible;
+  height: unset;
+  transform: scaleY(1);
+}
+
+.dropdown:hover > .label {
+  background: #987763;
+}
